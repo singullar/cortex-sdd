@@ -9,6 +9,8 @@ git clone https://github.com/singullar/cortex-sdd
 claude --plugin-dir ./cortex-sdd
 ```
 
+When the plugin is loaded this way, `/cortex:doctor` reports `plugin-enabled: FAIL`, because it is not installed from the marketplace. That is expected.
+
 ## Workflow
 
 1. Branch from `main` as `feat/<slug>`, `fix/<slug>` or `chore/<slug>`.
