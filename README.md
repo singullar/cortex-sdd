@@ -2,6 +2,8 @@
 
 A lean spec-driven development loop for Claude Code, with a knowledge vault that gets smarter every cycle.
 
+**Website:** [See how it works](https://claude.ai/artifact/SQV3BeChGgQKBaV86qGSeN#use)
+
 Most AI-assisted work starts from a blank page and forgets everything when the session ends. Cortex runs each unit of work as a **cycle** that starts by reading what you already know and ends by writing down what it learned.
 
 ```text
