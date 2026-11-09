@@ -1,0 +1,20 @@
+<!-- cortex-init:begin -->
+## Session init (cortex:init)
+
+### Repo conventions
+
+- Sessions are frequently started from a **cycle folder** (planning, notes, scratch) rather than from a source-code repo. The working directory at startup is not necessarily a repo root.
+- Whenever you access a repository that is **not** the current working directory, first locate and read its `CLAUDE.md` at the repo root. That file is the canonical entry point for repo-specific rules and overrides anything assumed from this session.
+- Multi-repo sessions are normal: load each repo's `CLAUDE.md` as you enter it, and do not let conventions from one repo leak into another.
+{{MAPPED_REPOS_BLOCK}}
+{{AI_BRAIN_BLOCK}}
+### Closed cycle
+
+- Once `.cortex-end-receipt.json` in this cycle has `closed_at`, the cycle is closed: never suggest `/cortex:explore`, another step or a next task in it. Say the cycle is closed and point to `SESSION-SUMMARY.md`. New work starts in a new cycle folder with `/cortex:init`.
+
+### Generated artifacts
+
+- Files produced by `/cortex:*` skills (`EXP.md`, `PLAN.md`, `EXEC.md`, `SESSION-SUMMARY.md`, etc.) are written in **English**, regardless of the conversation language.
+- This applies to section bodies, bullets, table cells, code comments inside fenced blocks, and frontmatter descriptions.
+- Every time written into a cycle artifact (a receipt's `completed_at`/`at`, a handoff's `written_at` and name) is the output of `date` run at that moment: `date -u` for an ISO stamp, local `date` for a handoff name. Never estimated, rounded or remembered. `started_at` is the reading taken when execution began; a resume keeps it.
+<!-- cortex-init:end -->

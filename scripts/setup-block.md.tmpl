@@ -1,0 +1,30 @@
+# Cycle Setup — persistent environment facts
+
+> Always in context: this file is imported via `@SETUP.md` in CLAUDE.md, so it
+> survives `/compact` and is re-injected every turn. Keep it current.
+> Edit this file directly; `/cortex:handoff` also sweeps new facts into it.
+> Last updated: {{TS}}
+
+These are the setup/environment facts that hold for the **whole cycle** — the
+things you must NOT forget after a compact. Fill in only what applies; leave the
+rest as `(not set)`. Never store secrets here (tokens, passwords, keys).
+
+| Fact | Value | Notes |
+|------|-------|-------|
+| AWS_PROFILE | (not set) | |
+| AWS account / alias | (not set) | |
+| AWS region(s) | (not set) | |
+| kube context(s) | (not set) | |
+| kube cluster(s) | (not set) | |
+| namespace(s) | (not set) | |
+| terraform dir / workspace | (not set) | |
+| Other tool profiles | (not set) | |
+
+## Operational invariants / notes
+
+_(free-form: "always use X", "never touch Y", discovered constraints that must
+hold for the rest of the cycle)_
+
+A long-lived local environment started for this cycle (compose stack, dev server,
+tunnel) gets a row in a `## Local environment` section added to this file; `/cortex:end`
+tears it down at close. Row format: `skills/end/SKILL.md` § "Local environment record".

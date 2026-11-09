@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.9", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Identify git for tests
+        run: |
+          git config --global user.name ci
+          git config --global user.email ci@example.invalid
+      - run: python3 -m unittest discover -s test
+
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install -g @anthropic-ai/claude-code
+      - name: Validate the plugin, allowing only the root CLAUDE.md warning
+        run: python3 test/check_plugin_validate.py
+
+  private-tokens:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan for private tokens
+        env:
+          PRIVATE_TOKEN_PATTERN: ${{ secrets.PRIVATE_TOKEN_PATTERN }}
+        run: |
+          if [ -z "$PRIVATE_TOKEN_PATTERN" ]; then
+            echo "PRIVATE_TOKEN_PATTERN is not set; skipping."
+            exit 0
+          fi
+          # File names only: a matched line would print the token into a public log.
+          if grep -rIliE --exclude-dir=.git "$PRIVATE_TOKEN_PATTERN" .; then
+            echo "Private tokens found in the files listed above."
+            exit 1
+          fi

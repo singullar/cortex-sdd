@@ -1,0 +1,29 @@
+{
+  "description": "cortex plugin hooks: the compact bridge (resume brief after a compaction + breadcrumb before one). No-op outside a cycle.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/cortex_compact_bridge.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "auto",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/cortex_compact_bridge.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

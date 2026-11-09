@@ -1,0 +1,7 @@
+.DS_Store
+.worktree/
+.worktrees/
+__pycache__/
+*.pyc
+.cortex-handoff-receipt.json
+.cortex-compact-log.json

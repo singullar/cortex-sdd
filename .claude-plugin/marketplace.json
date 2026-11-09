@@ -1,0 +1,14 @@
+{
+  "name": "cortex-sdd",
+  "description": "A lean spec-driven development loop for Claude Code.",
+  "owner": {
+    "name": "cortex-sdd maintainers"
+  },
+  "plugins": [
+    {
+      "name": "cortex",
+      "source": "./",
+      "description": "A lean spec-driven development loop with a knowledge vault that gets smarter every cycle."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "cortex",
+  "displayName": "Cortex SDD",
+  "version": "0.1.0",
+  "description": "A lean spec-driven development loop for Claude Code: explore, plan, execute, review and close, with a knowledge vault that gets smarter every cycle.",
+  "author": { "name": "cortex-sdd maintainers" },
+  "homepage": "https://github.com/singullar/cortex-sdd",
+  "repository": "https://github.com/singullar/cortex-sdd",
+  "license": "MIT",
+  "keywords": ["spec-driven-development", "sdd", "code-review", "knowledge-base", "workflow"]
+}
